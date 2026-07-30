@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Natalia Amat-Lefort — Human–AI Interaction Researcher</title>
+  <meta name="description" content="Natalia Amat-Lefort is a Lecturer and Researcher at Leiden University's Institute of Advanced Computer Science (LIACS), studying the interaction between humans and emerging technologies." />
+
+  <!-- Favicon: inline monogram, no external file needed -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2314564F'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='17' fill='%23F7F5F0' text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink:     'rgb(var(--c-ink) / <alpha-value>)',
+            paper:   'rgb(var(--c-paper) / <alpha-value>)',
+            surface: 'rgb(var(--c-surface) / <alpha-value>)',
+            cloud:   'rgb(var(--c-cloud) / <alpha-value>)',
+            accent:  'rgb(var(--c-accent) / <alpha-value>)',
+            'accent-deep': 'rgb(var(--c-accent-deep) / <alpha-value>)',
+            tint:    'rgb(var(--c-tint) / <alpha-value>)',
+            gold:    'rgb(var(--c-gold) / <alpha-value>)',
+            muted:   'rgb(var(--c-muted) / <alpha-value>)',
+            hair:    'rgb(var(--c-hair) / <alpha-value>)',
+            panel:     'rgb(var(--c-panel) / <alpha-value>)',
+            paneltext: 'rgb(var(--c-paneltext) / <alpha-value>)',
+          },
+          fontFamily: {
+            serif: ['Newsreader', 'Georgia', 'serif'],
+            sans:  ['Inter', 'system-ui', 'sans-serif'],
+            mono:  ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
+          },
+          maxWidth: { content: '72rem' },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* ===== Theme tokens (space-separated RGB channels) ===== */
+    :root {
+      --c-ink: 26 28 27;
+      --c-paper: 247 245 240;
+      --c-surface: 255 255 255;
+      --c-cloud: 251 250 246;
+      --c-accent: 20 86 79;
+      --c-accent-deep: 14 63 57;
+      --c-tint: 234 240 237;
+      --c-gold: 168 128 31;
+      --c-muted: 110 110 102;
+      --c-hair: 229 225 215;
+      --c-panel: 26 28 27;        /* dark contact/footer panel */
+      --c-paneltext: 247 245 240; /* light text on panel */
+      color-scheme: light;
+    }
+    .dark {
+      --c-ink: 233 231 224;
+      --c-paper: 20 24 23;
+      --c-surface: 31 37 35;
+      --c-cloud: 15 19 18;
+      --c-accent: 122 194 182;
+      --c-accent-deep: 150 210 199;
+      --c-tint: 28 44 41;
+      --c-gold: 202 170 90;
+      --c-muted: 150 152 144;
+      --c-hair: 44 51 48;
+      --c-panel: 9 12 11;
+      --c-paneltext: 233 231 224;
+      color-scheme: dark;
+    }
+
+    html { -webkit-font-smoothing: antialiased; }
+    body { background: rgb(var(--c-paper)); }
+
+    /* Smooth theme cross-fade (added after load to avoid flash on first paint) */
+    .theme-transitions * { transition: background-color .35s ease, border-color .35s ease, color .35s ease, fill .35s ease; }
+
+    /* Subtle dot texture that adapts to the theme */
+    .dot-grid { background-image: radial-gradient(rgb(var(--c-hair)) 1px, transparent 1px); background-size: 26px 26px; }
+
+    /* Anchor offset so sticky nav doesn't cover headings */
+    section[id] { scroll-margin-top: 5.5rem; }
+
+    /* Eyebrow label */
+    .eyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgb(var(--c-accent));
+    }
+
+    /* Animated underline for inline links */
+    .link-u {
+      background-image: linear-gradient(rgb(var(--c-accent)), rgb(var(--c-accent)));
+      background-size: 0% 1px;
+      background-repeat: no-repeat;
+      background-position: 0 100%;
+      transition: background-size .35s ease;
+    }
+    .link-u:hover, .link-u:focus-visible { background-size: 100% 1px; }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s cubic-bezier(.2,.6,.2,1), transform .7s cubic-bezier(.2,.6,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* Active nav state */
+    .nav-link.active { color: rgb(var(--c-accent)); }
+    .nav-link.active::after { width: 100%; }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: ''; position: absolute; left: 0; bottom: -4px; height: 1px; width: 0;
+      background: rgb(var(--c-accent)); transition: width .3s ease;
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Focus visibility */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid rgb(var(--c-accent)); outline-offset: 3px; border-radius: 2px;
+    }
+
+    /* Hero name fade-in on load */
+    @keyframes riseIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .rise { animation: riseIn .9s cubic-bezier(.2,.6,.2,1) both; }
+    .rise-1 { animation-delay: .05s; }
+    .rise-2 { animation-delay: .18s; }
+    .rise-3 { animation-delay: .31s; }
+    .rise-4 { animation-delay: .44s; }
+
+    /* Pulsing signal dot in research diagrams */
+    @keyframes signal { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+    .signal-dot { animation: signal 2.4s ease-in-out infinite; }
+
+    /* Publication filter */
+    .pub-item { transition: opacity .3s ease; }
+    .pub-item.hide { display: none; }
+    .filter-btn.active { background: rgb(var(--c-accent)); color: rgb(var(--c-paper)); border-color: rgb(var(--c-accent)); }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .rise { opacity: 1 !important; transform: none !important; animation: none !important; }
+      .signal-dot { animation: none !important; opacity: .7; }
+      .theme-transitions * { transition: none !important; }
+    }
+  </style>
+</head>
+
+<body class="font-sans text-ink antialiased selection:bg-tint">
+
+  <!-- Skip link -->
+  <a href="#home" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-accent focus:text-paper focus:px-4 focus:py-2 focus:rounded-md">Skip to content</a>
+
+  <!-- ============ NAV ============ -->
+  <header class="sticky top-0 z-40 border-b border-hair bg-paper/85 backdrop-blur-md">
+    <nav class="mx-auto flex max-w-content items-center justify-between px-5 py-4 sm:px-8">
+      <a href="#home" class="group flex items-center gap-2.5">
+        <span class="grid h-8 w-8 place-items-center rounded-lg bg-accent font-serif text-paper transition-transform group-hover:scale-105">N</span>
+        <span class="font-serif text-[1.05rem] tracking-tight">Natalia Amat-Lefort</span>
+      </a>
+
+      <!-- Right side controls -->
+      <div class="flex items-center gap-2.5">
+        <!-- Desktop links -->
+        <div class="hidden items-center gap-7 text-sm md:flex">
+          <a href="#about"        class="nav-link text-muted transition-colors hover:text-ink">About</a>
+          <a href="#research"     class="nav-link text-muted transition-colors hover:text-ink">Research</a>
+          <a href="#publications" class="nav-link text-muted transition-colors hover:text-ink">Publications</a>
+          <a href="#teaching"     class="nav-link text-muted transition-colors hover:text-ink">Teaching</a>
+          <a href="#achievements" class="nav-link text-muted transition-colors hover:text-ink">Honors</a>
+          <a href="#gallery"      class="nav-link text-muted transition-colors hover:text-ink">Gallery</a>
+          <a href="#contact"      class="rounded-full border border-accent px-4 py-1.5 text-accent transition-colors hover:bg-accent hover:text-paper">Get in touch</a>
+        </div>
+
+        <!-- Theme toggle -->
+        <button id="themeToggle" aria-label="Switch to dark mode" class="grid h-9 w-9 place-items-center rounded-md border border-hair text-ink transition-colors hover:border-accent hover:text-accent">
+          <svg id="themeIcon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
+
+        <!-- Mobile menu toggle -->
+        <button id="menuBtn" aria-label="Open menu" aria-expanded="false" class="grid h-9 w-9 place-items-center rounded-md border border-hair text-ink md:hidden">
+          <svg id="menuIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden border-t border-hair bg-paper md:hidden">
+      <div class="mx-auto flex max-w-content flex-col px-5 py-2 sm:px-8">
+        <a href="#about"        class="mob-link border-b border-hair/70 py-3 text-muted">About</a>
+        <a href="#research"     class="mob-link border-b border-hair/70 py-3 text-muted">Research</a>
+        <a href="#publications" class="mob-link border-b border-hair/70 py-3 text-muted">Publications</a>
+        <a href="#teaching"     class="mob-link border-b border-hair/70 py-3 text-muted">Teaching &amp; Mentoring</a>
+        <a href="#achievements" class="mob-link border-b border-hair/70 py-3 text-muted">Honors &amp; Other</a>
+        <a href="#gallery"      class="mob-link border-b border-hair/70 py-3 text-muted">Gallery</a>
+        <a href="#contact"      class="mob-link py-3 text-accent">Get in touch</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO / HOME ============ -->
+    <section id="home" class="relative overflow-hidden bg-paper">
+      <!-- faint grid texture -->
+      <div class="dot-grid pointer-events-none absolute inset-0 opacity-[0.4]"></div>
+
+      <div class="relative mx-auto grid max-w-content items-center gap-12 px-5 pb-20 pt-16 sm:px-8 md:grid-cols-[1.6fr_1fr] md:pt-24 md:pb-28">
+        <!-- Left: text -->
+        <div>
+          <p class="eyebrow rise rise-1">Leiden University · LIACS</p>
+
+          <h1 class="rise rise-2 mt-4 font-serif text-[2.7rem] font-medium leading-[1.05] tracking-tight sm:text-6xl">
+            Natalia<br>Amat-Lefort
+          </h1>
+
+          <!-- The signature line -->
+          <p class="rise rise-3 mt-6 max-w-xl leading-relaxed text-ink/80">
+            I study the interaction between humans and emerging technologies, bridging behavioral science and computer science to make AI more human-centered.
+          </p>
+
+          <p class="rise rise-3 mt-6 max-w-xl leading-relaxed text-muted">
+            As a Lecturer and Researcher at Leiden University's Institute of Advanced Computer Science (<a href="https://liacs.leidenuniv.nl/" target="_blank" rel="noopener" class="text-accent link-u">LIACS</a>), I design user studies to understand how people perceive and interact with technology.
+          </p>
+          <p class="rise rise-3 mt-4 max-w-xl leading-relaxed text-muted">
+            My current work focuses on human–AI interaction. Using quantitative survey methods (such as Structural Equation Modelling) and text analytics, I explore how people perceive, trust, and adopt AI. I also investigate how psychometric factors and sociodemographic differences influence the use of AI for various purposes, such as emotional support.
+          </p>
+
+          <!-- Quick links -->
+          <div class="rise rise-4 mt-8 flex flex-wrap items-center gap-3">
+            <a href="https://www.linkedin.com/in/nataliaamat/" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 rounded-full border border-hair bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-accent hover:text-accent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.98h4V21H3V8.98zM9 8.98h3.83v1.64h.05c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.14V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21H9V8.98z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=rIC4-5cAAAAJ&hl=en" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 rounded-full border border-hair bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-accent hover:text-accent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3zM5 13.2v3.3l7 3.8 7-3.8v-3.3l-7 3.8-7-3.8z"/></svg>
+              Google Scholar
+            </a>
+            <a href="https://orcid.org/0000-0001-7602-8614" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 rounded-full border border-hair bg-surface px-4 py-2 text-sm text-ink transition-colors hover:border-accent hover:text-accent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947 0 .525-.422.947-.947.947-.525 0-.946-.422-.946-.947 0-.516.421-.947.946-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.025-5.325 5.025h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 4.022-2.484 4.022-3.722 0-2.016-1.284-3.722-4.097-3.722h-2.222z"/></svg>
+              ORCID
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: portrait -->
+        <div class="rise rise-4">
+          <!-- PORTRAIT — swap photos/profile.jpeg for a different file if needed.
+               A ~4:5 head-and-shoulders portrait fits best; object-cover crops to fill the frame. -->
+          <div class="relative">
+            <div class="aspect-[4/5] w-full overflow-hidden rounded-2xl border border-hair bg-gradient-to-br from-tint to-cloud shadow-sm">
+              <img src="photos/profile.jpeg" alt="Natalia Amat-Lefort" class="h-full w-full object-cover">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section id="about" class="bg-cloud py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">01 / About</p>
+          <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">About me</h2>
+        </div>
+
+        <div class="mt-14 grid gap-12 md:grid-cols-[1.5fr_1fr]">
+          <!-- Bio -->
+          <div class="reveal space-y-8 text-[1.02rem] leading-relaxed text-ink/85">
+            <div>
+              <h3 class="mb-2 font-serif text-xl text-ink">From Industry to Academia</h3>
+              <p>Before becoming a teacher and researcher, I worked as a Senior Strategy &amp; Operations Consultant at KPMG and EY, where I learned to build financial models and optimize operations for clients across the energy, retail, and utility sectors. During this time, I volunteered to teach entrepreneurship and digital transformation courses to high-school students through Junior Achievement. These teaching experiences motivated my decision to pursue an academic career.</p>
+            </div>
+            <div>
+              <h3 class="mb-2 font-serif text-xl text-ink">Research Evolution: From Digital Platforms to AI</h3>
+              <p>My research investigates how humans interact with emerging technologies. During my PhD at UIC Barcelona (2019–2023), I focused on consumer studies within the sharing economy, exploring service quality and satisfaction in digital platforms like Airbnb and shared mobility networks. As technology has evolved, so has my focus. At LIACS, my work transitioned from digital platforms, to chatbots, to my current focus on human–AI interaction. In particular, my most recent work explores the adoption of Large Language Models (LLMs) for emotional support.</p>
+            </div>
+            <div>
+              <h3 class="mb-2 font-serif text-xl text-ink">Methodological Approach</h3>
+              <p>My work bridges behavioral science and computer science. Drawing on my background in consumer research, I design user studies to understand technology adoption and user perceptions. I use quantitative survey methodologies (such as Structural Equation Modeling) and text analytics (including topic modeling, sentiment analysis, and LLM-assisted knowledge extraction) to analyze user-generated content and prompts. Ultimately, my goal is to translate complex human–technology dynamics into actionable insights to make AI development more human-centered.</p>
+            </div>
+
+            <!-- CV button — commented out for now. To re-enable, uncomment this block and point href to your CV file (e.g. cv.pdf).
+            <a href="cv.pdf" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm text-paper transition-transform hover:-translate-y-0.5">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+              Download CV (PDF)
+            </a>
+            -->
+          </div>
+
+          <!-- Education timeline -->
+          <div class="reveal">
+            <p class="eyebrow mb-5">Education</p>
+            <ol class="relative space-y-7 border-l border-hair pl-6">
+              <li class="relative">
+                <span class="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent ring-4 ring-cloud"></span>
+                <p class="font-mono text-xs text-accent">2019 – 2023</p>
+                <h4 class="mt-1 font-serif text-lg leading-snug">Ph.D. in Business Management <span class="text-muted">(Cum Laude)</span></h4>
+                <p class="text-sm text-muted">Universitat Internacional de Catalunya (UIC Barcelona)</p>
+                <p class="mt-1.5 text-sm leading-relaxed text-ink/70">Best PhD Thesis Award (2025). Research collaboration with Politecnico di Torino (Italy), Newcastle University (UK), and the United Nations Industrial Development Organization (UNIDO).</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent/40 ring-4 ring-cloud"></span>
+                <p class="font-mono text-xs text-accent">2022</p>
+                <h4 class="mt-1 font-serif text-lg leading-snug">Machine Learning: Leveraging Data Insights</h4>
+                <p class="text-sm text-muted">MIT Professional Education</p>
+                <p class="mt-1.5 text-sm leading-relaxed text-ink/70">Emerging Technologies Online Program, supported by a Banco Santander scholarship.</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent/40 ring-4 ring-cloud"></span>
+                <p class="font-mono text-xs text-accent">2018 – 2019</p>
+                <h4 class="mt-1 font-serif text-lg leading-snug">Master's in Business Management</h4>
+                <p class="text-sm text-muted">UPF Barcelona School of Management</p>
+                <p class="mt-1.5 text-sm leading-relaxed text-ink/70">Best Master's Thesis Award (2019).</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[1.65rem] top-1.5 h-2.5 w-2.5 rounded-full bg-accent/40 ring-4 ring-cloud"></span>
+                <p class="font-mono text-xs text-accent">2011 – 2015</p>
+                <h4 class="mt-1 font-serif text-lg leading-snug">Bachelor of Business Management</h4>
+                <p class="text-sm text-muted">Universitat Pompeu Fabra (UPF, Barcelona)</p>
+                <p class="mt-1.5 text-sm leading-relaxed text-ink/70">Top 3% of class; Best Case Study Award (2013). Exchange semester at Boston College (Carroll School of Management), focusing on strategy and computer science.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ RESEARCH ============ -->
+    <section id="research" class="bg-paper py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">02 / Research</p>
+          <div>
+            <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">Research threads</h2>
+          </div>
+        </div>
+
+        <div class="mt-14 space-y-6">
+
+          <!-- Theme 1 -->
+          <article class="reveal group grid gap-6 rounded-2xl border border-hair bg-surface p-7 transition-shadow hover:shadow-md sm:p-9 md:grid-cols-[auto_1fr] md:gap-10">
+            <div class="flex items-start gap-5 md:flex-col md:gap-4">
+              <span class="font-mono text-sm text-accent">01</span>
+              <!-- graphical abstract: dialogue / trust -->
+              <svg width="92" height="92" viewBox="0 0 92 92" fill="none" class="shrink-0 text-accent" aria-hidden="true">
+                <circle cx="26" cy="40" r="9" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M14 64c0-7 6-12 12-12s12 5 12 12" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="50" y="24" width="32" height="24" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M58 54l4-6h6" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M57 33h18M57 39h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M38 40h10" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 3"/>
+                <circle class="signal-dot" cx="48" cy="40" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl leading-snug">Human–AI Interaction &amp; Generative AI Adoption</h3>
+              <p class="mt-3 leading-relaxed text-ink/80">As AI systems shift from tools to collaborative partners, understanding how users perceive and interact with AI is key. This research thread explores user perception, trust, and the behavioral drivers behind adopting conversational agents and AI systems such as LLMs. For example, my research investigates how factors like anthropomorphism (making a chatbot feel “more human”) affect user experience, and how sociodemographic differences shape the ways people adopt and trust LLMs for tasks like emotional support. The goal is to establish empirical foundations that ensure conversational systems are safe and human-centered.</p>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                <span class="font-mono text-xs uppercase tracking-wider text-muted">Key work</span>
+                <span class="text-ink/70">From Chatbots to Confidants (2026)</span>
+                <span class="text-hair">·</span>
+                <span class="text-ink/70">More Human, Less Bot (2024)</span>
+                <a href="#publications" data-jump="ai" class="ml-auto inline-flex items-center gap-1.5 text-accent link-u">View related publications →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Theme 2 -->
+          <article class="reveal group grid gap-6 rounded-2xl border border-hair bg-surface p-7 transition-shadow hover:shadow-md sm:p-9 md:grid-cols-[auto_1fr] md:gap-10">
+            <div class="flex items-start gap-5 md:flex-col md:gap-4">
+              <span class="font-mono text-sm text-accent">02</span>
+              <!-- graphical abstract: text -> knowledge graph -->
+              <svg width="92" height="92" viewBox="0 0 92 92" fill="none" class="shrink-0 text-accent" aria-hidden="true">
+                <path d="M14 22h26M14 30h20M14 38h24M14 46h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="60" cy="26" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="78" cy="44" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="58" cy="60" r="5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M63 30l11 10M65 28l-3 28M73 48l-12 9" stroke="currentColor" stroke-width="1.3"/>
+                <circle class="signal-dot" cx="60" cy="26" r="2" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl leading-snug">Applied Language Technologies &amp; User Text Analytics</h3>
+              <p class="mt-3 leading-relaxed text-ink/80">Traditional user-research methods often struggle to scale or to capture granular sentiment from the massive volume of user-generated content available today. This ongoing pillar deploys Natural Language Processing and text analytics (from sentiment features and topic models to LLMs) to extract insights from textual data like user reviews or prompts. Recent projects include building issue-detection systems for public-sector applications (Dutch government apps) and designing privacy-preserving information-extraction methods for sensitive legal text.</p>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                <span class="font-mono text-xs uppercase tracking-wider text-muted">Key work</span>
+                <span class="text-ink/70">Int. Journal of Quality &amp; Reliability Management (2023)</span>
+                <span class="text-hair">·</span>
+                <span class="text-ink/70">HICSS (2023)</span>
+                <a href="#publications" data-jump="nlp" class="ml-auto inline-flex items-center gap-1.5 text-accent link-u">View related publications →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Theme 3 -->
+          <article class="reveal group grid gap-6 rounded-2xl border border-hair bg-surface p-7 transition-shadow hover:shadow-md sm:p-9 md:grid-cols-[auto_1fr] md:gap-10">
+            <div class="flex items-start gap-5 md:flex-col md:gap-4">
+              <span class="font-mono text-sm text-accent">03</span>
+              <!-- graphical abstract: multi-sided market -->
+              <svg width="92" height="92" viewBox="0 0 92 92" fill="none" class="shrink-0 text-accent" aria-hidden="true">
+                <circle cx="46" cy="46" r="8" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="46" cy="16" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="20" cy="64" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="72" cy="64" r="6" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M46 24v14M40 51L25 60M52 51l15 9" stroke="currentColor" stroke-width="1.5"/>
+                <circle class="signal-dot" cx="46" cy="46" r="2.5" fill="currentColor"/>
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-serif text-2xl leading-snug">Consumer Dynamics &amp; Experience in Digital Platforms</h3>
+              <p class="mt-3 leading-relaxed text-ink/80">The rapid rise of the sharing economy and peer-to-peer digital platforms (home-sharing, shared mobility) transformed consumer expectations. This theme (main focus of my PhD research) addressed the complexities of multi-sided markets, investigating what drives customer loyalty, satisfaction, and friction. By introducing frameworks to conceptualize and measure “service inconvenience” and the alignment of guest and host expectations, this research gives digital platforms the behavioral frameworks they need to improve service quality and future-proof user retention in highly competitive ecosystems.</p>
+              <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+                <span class="font-mono text-xs uppercase tracking-wider text-muted">Key work</span>
+                <span class="text-ink/70">Journal of Service Research (2026)</span>
+                <span class="text-hair">·</span>
+                <span class="text-ink/70">Int. J. of Consumer Studies (2025)</span>
+                <a href="#publications" data-jump="platforms" class="ml-auto inline-flex items-center gap-1.5 text-accent link-u">View related publications →</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PUBLICATIONS ============ -->
+    <section id="publications" class="bg-cloud py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">03 / Publications</p>
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">Publications &amp; working papers</h2>
+            <a href="https://scholar.google.com/citations?user=rIC4-5cAAAAJ&hl=en" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 text-sm text-accent link-u">Full list on Google Scholar →</a>
+          </div>
+        </div>
+
+        <!-- Filters -->
+        <div class="reveal mt-10 flex flex-wrap gap-2.5" role="group" aria-label="Filter publications">
+          <button class="filter-btn active rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="all">All</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="star">★ Selected</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="journal">Journals</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="conference">Conferences</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="preprint">Preprints</button>
+          <span class="mx-1 hidden self-center text-hair sm:inline" aria-hidden="true">|</span>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="ai">Human–AI Int.</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="nlp">Applied Lang. Tech.</button>
+          <button class="filter-btn rounded-full border border-hair bg-surface px-4 py-1.5 text-sm transition-colors" data-filter="platforms">Consumer Dynamics</button>
+        </div>
+
+        <!-- List -->
+        <ul id="pubList" class="mt-10 divide-y divide-hair border-t border-hair">
+
+          <!-- Ordering: selected (★) first, then reverse-chronological. -->
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms" data-star="true">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 font-mono text-xs text-gold" title="Selected paper">★</span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">An inconvenient truth: understanding service inconvenience in digital platforms</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, S. J. Barnes</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Journal of Service Research</em>, 29(1), 45–62</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2026</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="preprint" data-theme="ai" data-star="true">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 font-mono text-xs text-gold">★</span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">
+                  <a href="https://arxiv.org/abs/2604.25525" target="_blank" rel="noopener" class="link-u hover:text-accent">From chatbots to confidants: a cross-cultural study of LLM adoption for emotional support</a>
+                </h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, M. Yazan, A. C. Curry, F. M. Plaza-del-Arco</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">arXiv preprint</em> · arXiv:2604.25525</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2026</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="ai" data-star="true">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 font-mono text-xs text-gold">★</span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">More human, less bot: how anthropomorphism impacts user experience in customer support chatbots</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, C. van Driel</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">International Conference on Intelligent Human Computer Interaction (IHCI)</em>, 147–158</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2024</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="nlp" data-star="true">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 font-mono text-xs text-gold">★</span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Quality 4.0: big data analytics to explore service quality attributes and their relation to user sentiment in Airbnb reviews</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Barravecchia, L. Mastrogiacomo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">International Journal of Quality &amp; Reliability Management</em>, 40(4), 990–1008</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms" data-star="true">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 font-mono text-xs text-gold">★</span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Towards a new model to understand quality in collaborative consumption services</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Marimon, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Journal of Cleaner Production</em>, 266, 121855</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2020</span>
+            </div>
+          </li>
+
+          <!-- Remaining works, newest first -->
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">
+                  <a href="https://arxiv.org/abs/2603.01910" target="_blank" rel="noopener" class="link-u hover:text-accent">FLANS at SemEval-2026 Task 7: RAG with open-sourced smaller LLMs for everyday knowledge across diverse languages and cultures</a>
+                </h3>
+                <p class="mt-1 text-sm text-muted">L. Bogdanova, S. Sun, L. Han, N. Amat-Lefort, F. M. Plaza-del-Arco</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">SemEval-2026</em> · arXiv:2603.01910</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2026</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">
+                  <a href="https://arxiv.org/abs/2603.07766" target="_blank" rel="noopener" class="link-u hover:text-accent">QuadAI at SemEval-2026 Task 3: ensemble learning of hybrid RoBERTa and LLMs for dimensional aspect-based sentiment analysis</a>
+                </h3>
+                <p class="mt-1 text-sm text-muted">A. J. W. de Vink, F. K. Ventirozos, N. Amat-Lefort, L. Han</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">SemEval-2026</em> · arXiv:2603.07766</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2026</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">
+                  <a href="https://doi.org/10.63317/3s2rpqsud2um" target="_blank" rel="noopener" class="link-u hover:text-accent">Privacy-preserving information extraction with local LLMs: a comparative study on Dutch debt collection letters</a>
+                </h3>
+                <p class="mt-1 text-sm text-muted">B. Celep, N. Amat-Lefort, J. Visser</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Proceedings of the Fifteenth Language Resources and Evaluation Conference (LREC 2026)</em>, 10140–10149 · ELRA</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2026</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Fulfilled expectations: key to customer loyalty in digital home-sharing platforms</h3>
+                <p class="mt-1 text-sm text-muted">F. Marimon, N. Amat-Lefort, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">International Journal of Consumer Studies</em>, 49(3), e70051</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2025</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">The absence of international standardized quality criteria in doctorate programs in surgery: a survey study</h3>
+                <p class="mt-1 text-sm text-muted">N. Llorach-Perucho, M. Pera, E. Espín-Bassany, J. F. Julián-Ibáñez, et al.</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Journal of Medical Education and Curricular Development</em>, 12</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2025</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">ReviewGraph: a knowledge graph embedding based framework for review rating prediction with sentiment features</h3>
+                <p class="mt-1 text-sm text-muted">A. J. W. de Vink, N. Amat-Lefort, L. Han</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">2025 IEEE International Conference on Knowledge Graph (ICKG)</em>, 43–50</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2025</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="preprint" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Issue detection and future proofing Dutch government apps using language technologies</h3>
+                <p class="mt-1 text-sm text-muted">A. M. Matei, F. M. Plaza-del-Arco, N. Amat-Lefort</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2025</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">What can we learn from the ‘wisdom of crowds’? Drivers of (dis)satisfaction in shared mobility platforms: a comparison of free-floating and station-based models</h3>
+                <p class="mt-1 text-sm text-muted">A. Akhmedova, N. Amat-Lefort, F. Barravecchia, L. Mastrogiacomo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Journal of Cleaner Production</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2024</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Guest and host perspectives of service quality and satisfaction in digital home-sharing platforms</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Marimon, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Journal of Quality Assurance in Hospitality &amp; Tourism</em>, 24(6), 859–884</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Exploring driver and user perspectives of service quality in sharing economy transport platforms</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Marimon, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Total Quality Management &amp; Business Excellence</em>, 34(11–12), 1315–1333</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Towards more convenient services: a text analytics approach to understanding service inconveniences in digital platforms</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, S. Barnes</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Proceedings of the 56th Hawaii International Conference on System Sciences (HICSS)</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Fulfilment of expectations and loyalty in digital home-sharing platforms</h3>
+                <p class="mt-1 text-sm text-muted">F. Marimon, N. Amat-Lefort, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">83rd Academy of Management Conference</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="preprint" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Understanding quality and consumer satisfaction in platform-based services: conceptual model, assessment scale, and consumer analytics</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Ph.D. dissertation</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="chapter" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <span class="mb-1 inline-block rounded-full bg-tint px-2 py-0.5 font-mono text-[0.65rem] uppercase tracking-wider text-accent">Book chapter</span>
+                <h3 class="font-serif text-lg leading-snug">Text analytics to identify inconveniences on digital platforms</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, S. J. Barnes</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Revista de Comptabilitat i Direcció / Revista de Contabilidad y Dirección</em>, 35 · <span class="text-muted">Catalan &amp; Spanish editions</span></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2023</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="journal" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Is there the same requirement to obtain the PhD degree in all the departments of surgery of the Spanish universities?</h3>
+                <p class="mt-1 text-sm text-muted">X. Serra-Aracil, M. A. Carrasco, J. M. Robles, E. E. Basany, N. Amat-Lefort, et al.</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Cirugía Española (English Edition)</em>, 100(8), 496–503</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2022</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Exploring Airbnb service quality attributes and their relation to user sentiment through text mining analytics</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Barravecchia, L. Mastrogiacomo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">31st Spanish Academy of Management (ACEDE) Conference</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2022</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Big data insights from shared mobility platforms: drivers of user (dis)satisfaction</h3>
+                <p class="mt-1 text-sm text-muted">A. Akhmedova, N. Amat-Lefort, F. Barravecchia, L. Mastrogiacomo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">22nd European Academy of Management (EURAM) Conference</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2022</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">What do drivers care about? Exploring how service quality is perceived by providers of collaborative transport services</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Marimon, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">7th International Workshop on the Sharing Economy (IWSE)</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2021</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Identifying the drivers of service quality in collaborative accommodation services</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, F. Marimon, M. Mas-Machuca</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">4th International Conference on Quality Engineering and Management (ICQEM)</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2020</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="earlier" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Evolution of financial information and management control over the last 150 years: the case of Bodegas Torres</h3>
+                <p class="mt-1 text-sm text-muted">O. A. Salas, N. Amat</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Universitat Pompeu Fabra, Department of Economics and Business</em></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2019</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="earlier" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Costs and international relocation: the case of a textile company</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Revista de Contabilidad y Dirección</em>, 26, 175–184 · <span class="text-muted">Spanish</span></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2018</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="earlier" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">Initiatives that have boosted the abundance of capital for financing new businesses</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Revista de Contabilidad y Dirección</em>, 27, 83–91 · <span class="text-muted">Spanish</span></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2018</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="earlier" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">From financial value to real company value</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat, O. Amat</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Oikonomics: Economics, Business, and Society Journal</em>, 10, 74–86 · <span class="text-muted">Catalan</span></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2018</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="earlier" data-theme="other">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">The reliability of financial information and its impact on analysts and investors: the case of Pescanova</h3>
+                <p class="mt-1 text-sm text-muted">N. Amat-Lefort, R. Mercader, P. Crespo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">Revista de Contabilidad y Dirección</em>, 16, 291–314 · <span class="text-muted">Spanish</span></p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">2013</span>
+            </div>
+          </li>
+
+          <li class="pub-item py-6" data-cat="preprint" data-theme="platforms">
+            <div class="flex items-baseline gap-3">
+              <span class="mt-1 w-3 shrink-0"></span>
+              <div>
+                <h3 class="font-serif text-lg leading-snug">
+                  <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4330716" target="_blank" rel="noopener" class="link-u hover:text-accent">Wheels when you want them: studying Quality 4.0 on car-sharing platforms</a>
+                </h3>
+                <p class="mt-1 text-sm text-muted">A. Akhmedova, N. Amat-Lefort, F. Barravecchia, L. Mastrogiacomo</p>
+                <p class="mt-1 text-sm"><em class="font-serif italic text-ink/80">SSRN</em> · 4330716</p>
+              </div>
+              <span class="ml-auto shrink-0 font-mono text-sm text-accent">—</span>
+            </div>
+          </li>
+
+        </ul>
+
+        <p id="pubEmpty" class="hidden py-10 text-center text-muted">No publications in this category yet.</p>
+      </div>
+    </section>
+
+    <!-- ============ TEACHING ============ -->
+    <section id="teaching" class="bg-paper py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">04 / Teaching &amp; Mentoring</p>
+          <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">Teaching, supervision, and mentoring</h2>
+        </div>
+
+        <div class="mt-14 grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+          <!-- Teaching experience -->
+          <div class="reveal">
+            <p class="eyebrow mb-5">Teaching experience</p>
+            <div class="space-y-6">
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-tint px-2.5 py-0.5 font-mono text-xs text-accent">Main instructor</span>
+                  <span class="font-mono text-xs text-muted">2022 – present</span>
+                </div>
+                <h4 class="mt-3 font-serif text-lg">LIACS, Leiden University</h4>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">Master-level courses: Operations Management and Systems Optimization (both taught in English).</p>
+              </div>
+
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-tint px-2.5 py-0.5 font-mono text-xs text-accent">Main instructor</span>
+                  <span class="font-mono text-xs text-muted">2019 – 2022</span>
+                </div>
+                <h4 class="mt-3 font-serif text-lg">UIC &amp; Tecnocampus</h4>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">Bachelor-level courses: Accounting II (Cost Accounting) at UIC; Financial Management at Tecnocampus (taught in English).</p>
+              </div>
+
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between">
+                  <span class="rounded-full bg-hair/60 px-2.5 py-0.5 font-mono text-xs text-ink/70">Teaching assistant</span>
+                  <span class="font-mono text-xs text-muted">2018 – 2019</span>
+                </div>
+                <h4 class="mt-3 font-serif text-lg">UPF Barcelona</h4>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">TA for four Bachelor-level courses (Financial Accounting, Cost Accounting I, International Financial Accounting, and Introduction to Financial Accounting), preparing and leading tutorial sessions in English, Spanish, and Catalan.</p>
+              </div>
+            </div>
+
+            <!-- Mentoring & Associations -->
+            <p class="eyebrow mb-5 mt-10">Mentoring &amp; Associations</p>
+            <div class="space-y-6">
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <h4 class="font-serif text-lg">LIAXX</h4>
+                  <span class="shrink-0 font-mono text-xs text-muted">2023 – Present</span>
+                </div>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">Member of LIAXX, a women's network at Leiden University. I contribute by helping organize events to inspire and empower women in Computer Science.</p>
+              </div>
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <h4 class="font-serif text-lg">UPFemale Mentoring</h4>
+                  <span class="shrink-0 font-mono text-xs text-muted">2020 – 2024</span>
+                </div>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">A woman-to-woman mentoring project created at Universitat Pompeu Fabra (UPF) in Barcelona, connecting female students with alumni professionals to help close gender gaps in business. As a mentor, I guided several female students through one-to-one mentoring sessions, and I also helped organize and promote events focused on personal and professional growth.</p>
+              </div>
+              <div class="rounded-xl border border-hair bg-surface p-5">
+                <div class="flex items-center justify-between gap-3">
+                  <h4 class="font-serif text-lg">Erasmus Student Network — Mentor Program</h4>
+                  <span class="shrink-0 font-mono text-xs text-muted">2014 – 2015</span>
+                </div>
+                <p class="mt-1 text-sm leading-relaxed text-ink/75">Mentored several international students at my university, helping them settle in and navigate academic life abroad.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Student supervision -->
+          <div class="reveal">
+            <p class="eyebrow mb-5">Student supervision</p>
+            <div class="overflow-hidden rounded-xl border border-hair bg-surface">
+              <table class="w-full text-left text-sm">
+                <thead class="border-b border-hair bg-cloud">
+                  <tr class="font-mono text-xs uppercase tracking-wider text-muted">
+                    <th class="px-4 py-3 font-medium">Student</th>
+                    <th class="hidden px-4 py-3 font-medium sm:table-cell">Project</th>
+                    <th class="px-4 py-3 font-medium">Role</th>
+                    <th class="px-4 py-3 font-medium">Year</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-hair">
+                  <!-- 2025–2026.  Tip: complete the truncated thesis titles when finalized. -->
+                  <tr><td class="px-4 py-3 align-top font-medium">Lu, S.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Does structured grounded generation improve consumer response to AI-generated content? <span class="block text-xs text-muted">MSc DSAI</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025–26</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Afzal Khan, R.N.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Linguistic bias between Hindi and Urdu in sentiment classification <span class="block text-xs text-muted">MSc DSAI</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025–26</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Chatterjee, A.D.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Reading between the lines: the communication of corporate sustainability <span class="block text-xs text-muted">MSc DSAI</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025–26</td></tr>
+                  <!-- 2025 -->
+                  <tr><td class="px-4 py-3 align-top font-medium">Kitagawa, S.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">ChatCOP: an LLM-based chatbot for knowledge sharing <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Papadaki, I.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Influencing purchase intention through chatbots <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Vonk, J.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Employees' GenAI readiness and work experience <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Matei, A.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Issue detection &amp; future-proofing Dutch government apps <span class="block text-xs text-muted">MSc Computer Science</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Wiharnadi, D.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">User gratifications &amp; gender patterns in ChatGPT adoption <span class="block text-xs text-muted">BSc Informatica &amp; Economie</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Fatima, F.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Generative AI's influence on team collaboration <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Celep, B.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Extraction of metadata from debt letters with local NLP models <span class="block text-xs text-muted">BSc Data Science</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Sluis, D. van der</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Using LLMs to extract key information from Dutch government reports <span class="block text-xs text-muted">BSc Informatica &amp; Economie</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2025</td></tr>
+                  <!-- 2024 -->
+                  <tr><td class="px-4 py-3 align-top font-medium">Goretti, M.G.R.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">META-QUAL: a framework to evaluate metaverse performance <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2024</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Knigge, M.C.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Impact of data quality on default prediction <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2024</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Driel, C. van</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">More human, less bot: social presence, satisfaction &amp; trust <span class="block text-xs text-muted">BSc Informatica &amp; Economie</span></td><td class="px-4 py-3 align-top text-accent">1st</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2024</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Akkers, M.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Intelligent automation in military supply chains <span class="block text-xs text-muted">MSc ICT in Business</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2024</td></tr>
+                  <tr><td class="px-4 py-3 align-top font-medium">Fietelaars, C.L.T.E.</td><td class="hidden px-4 py-3 align-top text-ink/70 sm:table-cell">Communicating release notes to users more effectively <span class="block text-xs text-muted">BSc Informatica &amp; Economie</span></td><td class="px-4 py-3 align-top text-ink/60">2nd</td><td class="px-4 py-3 align-top font-mono text-xs text-muted">2024</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p class="mt-3 text-xs text-muted">Roles: <span class="text-accent">1st</span> = first supervisor · <span class="text-ink/60">2nd</span> = second supervisor.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ACHIEVEMENTS ============ -->
+    <section id="achievements" class="bg-cloud py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">05 / Honors &amp; Other</p>
+          <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">Honors, grants, and other activities</h2>
+        </div>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <!-- Awards, honors, & nominations -->
+          <div class="reveal rounded-2xl border border-hair bg-surface p-7">
+            <p class="eyebrow">Awards, honors, &amp; nominations</p>
+            <ul class="mt-5 space-y-4 text-sm">
+              <li><span class="font-mono text-xs text-accent">2025</span><p class="mt-0.5 text-ink/85">Best PhD Thesis Award — Faculty award, UIC Barcelona.</p></li>
+              <li><span class="font-mono text-xs text-accent">2025</span><p class="mt-0.5 text-ink/85">Nomination: Teacher of the Year Award — Leiden University, Faculty of Science.</p></li>
+              <li><span class="font-mono text-xs text-accent">2023</span><p class="mt-0.5 text-ink/85">PhD awarded <em class="font-serif italic">Cum Laude</em> — UIC Barcelona.</p></li>
+              <li><span class="font-mono text-xs text-accent">2023</span><p class="mt-0.5 text-ink/85">Nomination: Teacher of the Year Award — Leiden University, Faculty of Science.</p></li>
+              <li><span class="font-mono text-xs text-accent">2023</span><p class="mt-0.5 text-ink/85">Best Paper Award — 56th Hawaii International Conference on System Sciences (Decision Analytics &amp; Service Science Track).</p></li>
+              <li><span class="font-mono text-xs text-accent">2019</span><p class="mt-0.5 text-ink/85">Best Master's Thesis Award — UPF Barcelona School of Management.</p></li>
+              <li><span class="font-mono text-xs text-accent">2015</span><p class="mt-0.5 text-ink/85">Graduated in the top 3% of my Bachelor class — Universitat Pompeu Fabra (Barcelona).</p></li>
+              <li><span class="font-mono text-xs text-accent">2015</span><p class="mt-0.5 text-ink/85">Semi-finalist: Unilever Future Leaders League (local and global student competition).</p></li>
+              <li><span class="font-mono text-xs text-accent">2013</span><p class="mt-0.5 text-ink/85">Best Case Study Award — Universitat Pompeu Fabra (Barcelona).</p></li>
+            </ul>
+          </div>
+
+          <!-- Grants & fellowships -->
+          <div class="reveal rounded-2xl border border-hair bg-surface p-7">
+            <p class="eyebrow">Grants &amp; fellowships</p>
+            <ul class="mt-5 space-y-4 text-sm">
+              <li><span class="font-mono text-xs text-accent">2025</span><p class="mt-0.5 text-ink/85">Una Europa scholarship — Data Science and AI for Social Welfare Challenge (Summer School, Universidad Complutense).</p></li>
+              <li><span class="font-mono text-xs text-accent">2022</span><p class="mt-0.5 text-ink/85">Banco Santander scholarship — MIT Professional Education, Emerging Technologies Online Program.</p></li>
+              <li><span class="font-mono text-xs text-accent">2022</span><p class="mt-0.5 text-ink/85">Research collaboration with the United Nations Industrial Development Organization (UNIDO) through the Regional Academy on the United Nations (RAUN).</p></li>
+              <li><span class="font-mono text-xs text-accent">2014</span><p class="mt-0.5 text-ink/85">AGAUR/MOBINT scholarship to study at Boston College.</p></li>
+              <li><span class="font-mono text-xs text-accent">2014</span><p class="mt-0.5 text-ink/85">Aurora Bertrana–Santander scholarship to study at Boston College.</p></li>
+            </ul>
+          </div>
+
+          <!-- Academic service & volunteering -->
+          <div class="reveal rounded-2xl border border-hair bg-surface p-7">
+            <p class="eyebrow">Academic service &amp; volunteering</p>
+            <ul class="mt-5 space-y-4 text-sm">
+              <li><span class="font-mono text-xs text-accent">2025 – Present</span><p class="mt-0.5 text-ink/85">Chair of the Business Studies Education Committee at LIACS.</p></li>
+              <li><span class="font-mono text-xs text-accent">2023 – 2025</span><p class="mt-0.5 text-ink/85">Member of the Business Studies Education Committee at LIACS.</p></li>
+              <li><span class="font-mono text-xs text-accent">2020 – Current</span><p class="mt-0.5 text-ink/85">Peer reviewer for several consumer research and human–computer interaction journals and conferences.</p></li>
+              <li><span class="font-mono text-xs text-accent">2016 – 2017</span><p class="mt-0.5 text-ink/85">Volunteer educator with Junior Achievement, teaching entrepreneurship and digital transformation to high-school students.</p></li>
+              <li><span class="font-mono text-xs text-accent">2015</span><p class="mt-0.5 text-ink/85">Volunteer consultant for Banc dels Aliments (Food Bank), a non-profit Spanish organization that fights hunger and food waste.</p></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ GALLERY ============ -->
+    <!--
+      GALLERY PHOTOS:
+      Each tile points to a file inside the "photos" folder (e.g. photos/lrec26.jpeg).
+      Upload those files to a folder named "photos" next to index.html and they appear here.
+      - To change a photo: edit the src="photos/..." filename and the alt="..." text on that tile.
+      - The caption shown under the photo is the figcaption text — edit it freely.
+      - Keep the class "gallery-img" so clicking a photo opens the enlarged viewer.
+      - To add another photo: copy a whole <figure> ... </figure> block, paste it, and change the src/alt/caption.
+      - To remove one: delete its <figure> ... </figure> block.
+    -->
+    <section id="gallery" class="bg-paper py-20 sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="reveal grid gap-3 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2">06 / Gallery</p>
+          <h2 class="font-serif text-3xl font-medium tracking-tight sm:text-4xl">Conferences, ceremonies &amp; milestones</h2>
+        </div>
+
+        <div id="galleryGrid" class="reveal mt-14 grid grid-cols-2 gap-4 md:grid-cols-3">
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/lrec26.jpeg" alt="LREC '26, Mallorca" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">LREC '26, Mallorca</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/unaeuropa25.jpeg" alt="Data Science &amp; AI for Social Welfare Challenge, Madrid, 2025" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Data Science &amp; AI for Social Welfare Challenge, Madrid, 2025</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/phd_award.jpeg" alt="Best PhD Thesis Award Ceremony, 2025" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Best PhD Thesis Award Ceremony, 2025</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/phd_defense.jpeg" alt="PhD Thesis Defense, Barcelona, 2023" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">PhD Thesis Defense, Barcelona, 2023</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/hicss23.jpeg" alt="Best Paper Award, HICSS '23, Hawaii" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Best Paper Award, HICSS '23, Hawaii</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/teacher_award23.jpeg" alt="Nomination for Teacher of the Year Award, Leiden, 2023" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Nomination for Teacher of the Year Award, Leiden, 2023</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/euram22.jpeg" alt="EURAM '22, Zurich" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">EURAM '22, Zurich</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/euram22_presentation.jpeg" alt="Presenting at EURAM '22, Zurich" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Presenting at EURAM '22, Zurich</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/unido22.jpeg" alt="Research collaboration with the United Nations (UNIDO), Vienna, 2022" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Research collaboration with the United Nations (UNIDO), Vienna, 2022</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/master_award2019.jpg" alt="Best Master Thesis Awards, Barcelona, 2019" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Best Master Thesis Awards, Barcelona, 2019</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/kpmg_2017.jpeg" alt="KPMG Advisory Offsite event, Madrid, 2017" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">KPMG Advisory Offsite event, Madrid, 2017</figcaption>
+          </figure>
+
+          <figure class="gallery-tile group">
+            <div class="relative aspect-[4/3] overflow-hidden rounded-xl border border-hair bg-tint">
+              <img src="photos/bachelor_award2015.jpg" alt="Awards Ceremony: Top 10 Bachelor in Business Management students, Barcelona, 2015" class="gallery-img h-full w-full cursor-zoom-in object-cover transition-transform duration-500 group-hover:scale-105">
+            </div>
+            <figcaption class="mt-2.5 text-sm text-muted">Awards Ceremony: Top 10 Bachelor in Business Management students, Barcelona, 2015</figcaption>
+          </figure>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox (opens when a real .gallery-img photo is clicked) -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/85 p-6" role="dialog" aria-modal="true" aria-label="Photo viewer">
+      <button id="lightboxClose" aria-label="Close viewer" class="absolute right-5 top-5 grid h-10 w-10 place-items-center rounded-full border border-white/30 text-white transition-colors hover:bg-white/10">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <figure class="max-w-4xl">
+        <img id="lightboxImg" src="" alt="" class="mx-auto max-h-[80vh] w-auto rounded-lg object-contain" />
+        <figcaption id="lightboxCap" class="mt-3 text-center text-sm text-white/80"></figcaption>
+      </figure>
+    </div>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="bg-panel py-20 text-paneltext sm:py-28">
+      <div class="mx-auto max-w-content px-5 sm:px-8">
+        <div class="grid gap-12 md:grid-cols-[auto_1fr] md:gap-12">
+          <p class="eyebrow md:pt-2" style="color: rgb(var(--c-accent))">07 / Contact</p>
+          <div class="reveal max-w-2xl">
+            <h2 class="font-serif text-3xl font-medium leading-tight tracking-tight sm:text-5xl">Let's start a conversation.</h2>
+            <p class="mt-5 text-lg leading-relaxed text-paneltext/75">I am always open to discussing new research collaborations, speaking opportunities, or answering questions about my work.</p>
+
+            <!-- Email is assembled by JS to deter scrapers -->
+            <a id="emailLink" href="#" class="mt-8 inline-flex items-center gap-3 font-serif text-xl text-paneltext transition-colors hover:text-accent sm:text-2xl">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+              <span id="emailText">n.amat-lefort [at] liacs.leidenuniv.nl</span>
+            </a>
+
+            <div class="mt-10 flex flex-wrap gap-4">
+              <a href="https://scholar.google.com/citations?user=rIC4-5cAAAAJ&hl=en" target="_blank" rel="noopener" class="rounded-full border border-paneltext/25 px-4 py-2 text-sm text-paneltext/85 transition-colors hover:border-paneltext hover:text-paneltext">Google Scholar</a>
+              <a href="https://www.linkedin.com/in/nataliaamat/" target="_blank" rel="noopener" class="rounded-full border border-paneltext/25 px-4 py-2 text-sm text-paneltext/85 transition-colors hover:border-paneltext hover:text-paneltext">LinkedIn</a>
+              <a href="https://orcid.org/0000-0001-7602-8614" target="_blank" rel="noopener" class="rounded-full border border-paneltext/25 px-4 py-2 text-sm text-paneltext/85 transition-colors hover:border-paneltext hover:text-paneltext">ORCID</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-paneltext/10 bg-panel py-8 text-paneltext/55">
+    <div class="mx-auto flex max-w-content flex-col items-center justify-between gap-3 px-5 text-sm sm:flex-row sm:px-8">
+      <p class="font-serif">Natalia Amat-Lefort</p>
+      <p class="font-mono text-xs">Leiden University · LIACS · © <span id="year"></span></p>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Assemble email (scraper deterrent)
+    (function () {
+      const user = 'n.amat-lefort', domain = 'liacs.leidenuniv.nl';
+      const link = document.getElementById('emailLink');
+      link.setAttribute('href', 'mailto:' + user + '@' + domain);
+    })();
+
+    // Theme toggle (light / dark)
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const icon = document.getElementById('themeIcon');
+      const moon = '<path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/>';
+      const sun  = '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>';
+      function setTheme(dark) {
+        root.classList.toggle('dark', dark);
+        icon.innerHTML = dark ? sun : moon;
+        btn.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+      }
+      // Initialize from the visitor's system preference (persists within the session).
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark);
+      btn.addEventListener('click', () => setTheme(!root.classList.contains('dark')));
+      // Enable smooth color transitions only after first paint (avoids a flash on load).
+      window.addEventListener('load', () => root.classList.add('theme-transitions'));
+    })();
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const iconMenu = '<path d="M3 6h18M3 12h18M3 18h18"/>';
+    const iconClose = '<path d="M6 6l12 12M18 6L6 18"/>';
+    function toggleMenu(open) {
+      const isOpen = open ?? mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden', !isOpen);
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+      menuIcon.innerHTML = isOpen ? iconClose : iconMenu;
+    }
+    menuBtn.addEventListener('click', () => toggleMenu());
+    document.querySelectorAll('.mob-link').forEach(l => l.addEventListener('click', () => toggleMenu(false)));
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Active nav link
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.getAttribute('id');
+          navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + id));
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(s => navObserver.observe(s));
+
+    // Publication filtering
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const pubItems = document.querySelectorAll('.pub-item');
+    const pubEmpty = document.getElementById('pubEmpty');
+
+    const CATS = ['journal', 'conference', 'preprint'];
+    const THEMES = ['ai', 'nlp', 'platforms'];
+
+    function applyFilter(filter) {
+      let visible = 0;
+      pubItems.forEach(item => {
+        let show;
+        if (filter === 'all') show = true;
+        else if (filter === 'star') show = item.dataset.star === 'true';
+        else if (CATS.includes(filter)) show = item.dataset.cat === filter;
+        else if (THEMES.includes(filter)) show = item.dataset.theme === filter;
+        else show = true;
+        item.classList.toggle('hide', !show);
+        if (show) visible++;
+      });
+      pubEmpty.classList.toggle('hidden', visible !== 0);
+    }
+    function setActive(filter) {
+      filterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+    }
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => { setActive(btn.dataset.filter); applyFilter(btn.dataset.filter); });
+    });
+
+    // "View related publications" → activate the matching research-thread filter button
+    document.querySelectorAll('[data-jump]').forEach(link => {
+      link.addEventListener('click', () => {
+        const theme = link.dataset.jump;   // 'ai' | 'nlp' | 'platforms'
+        setActive(theme);
+        applyFilter(theme);
+      });
+    });
+
+    // Gallery lightbox — activates when a real .gallery-img photo is clicked
+    (function () {
+      const grid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      if (!grid || !lightbox) return;
+      const lbImg = document.getElementById('lightboxImg');
+      const lbCap = document.getElementById('lightboxCap');
+      function open(src, cap) {
+        lbImg.src = src; lbImg.alt = cap || '';
+        lbCap.textContent = cap || '';
+        lightbox.classList.remove('hidden'); lightbox.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lightbox.classList.add('hidden'); lightbox.classList.remove('flex');
+        lbImg.src = ''; document.body.style.overflow = '';
+      }
+      grid.addEventListener('click', e => {
+        const img = e.target.closest('img.gallery-img');
+        if (img) open(img.currentSrc || img.src, img.getAttribute('alt'));
+      });
+      document.getElementById('lightboxClose').addEventListener('click', close);
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) close(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+</body>
+</html>
