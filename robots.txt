@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nataliaamat.github.io/sitemap.xml
