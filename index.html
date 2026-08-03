@@ -465,7 +465,7 @@
 
           <!-- Ordering: selected (★) first, then reverse-chronological. -->
 
-          <li class="pub-item py-6" data-cat="journal" data-theme="platforms" data-star="true">
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms nlp" data-star="true">
             <div class="flex items-baseline gap-3">
               <span class="mt-1 font-mono text-xs text-gold" title="Selected paper">★</span>
               <div>
@@ -619,7 +619,7 @@
             </div>
           </li>
 
-          <li class="pub-item py-6" data-cat="journal" data-theme="platforms">
+          <li class="pub-item py-6" data-cat="journal" data-theme="platforms nlp">
             <div class="flex items-baseline gap-3">
               <span class="mt-1 w-3 shrink-0"></span>
               <div>
@@ -655,7 +655,7 @@
             </div>
           </li>
 
-          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms nlp">
             <div class="flex items-baseline gap-3">
               <span class="mt-1 w-3 shrink-0"></span>
               <div>
@@ -691,7 +691,7 @@
             </div>
           </li>
 
-          <li class="pub-item py-6" data-cat="conference" data-theme="nlp">
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms nlp">
             <div class="flex items-baseline gap-3">
               <span class="mt-1 w-3 shrink-0"></span>
               <div>
@@ -703,7 +703,7 @@
             </div>
           </li>
 
-          <li class="pub-item py-6" data-cat="conference" data-theme="platforms">
+          <li class="pub-item py-6" data-cat="conference" data-theme="platforms nlp">
             <div class="flex items-baseline gap-3">
               <span class="mt-1 w-3 shrink-0"></span>
               <div>
@@ -1192,7 +1192,7 @@
     const pubEmpty = document.getElementById('pubEmpty');
 
     const CATS = ['journal', 'conference', 'preprint'];
-    const THEMES = ['ai', 'nlp', 'platforms'];
+    const  = ['ai', 'nlp', 'platforms'];
 
     function applyFilter(filter) {
       let visible = 0;
@@ -1201,8 +1201,7 @@
         if (filter === 'all') show = true;
         else if (filter === 'star') show = item.dataset.star === 'true';
         else if (CATS.includes(filter)) show = item.dataset.cat === filter;
-        else if (THEMES.includes(filter)) show = item.dataset.theme === filter;
-        else show = true;
+        else if (THEMES.includes(filter)) show = item.dataset.theme.split(" ").includes(filter);
         item.classList.toggle('hide', !show);
         if (show) visible++;
       });
